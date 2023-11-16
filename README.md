@@ -1,5 +1,4 @@
 # FiMAP-code
-Simulation and real data analysis code for the FiMAP paper
 ## Description
 <a href="https://github.com/hanchenphd/FiMAP">FiMAP</a> is an R package for performing efficient identity-by-descent (IBD) mapping test using IBD segments to identify genomic regions associated with complex traits in large biobank-scale cohorts. This repository includes all simulation and real data analysis code used in the FiMAP paper (<em>Chen, Naseri and Zhi, 2021</em>).
 ## License
