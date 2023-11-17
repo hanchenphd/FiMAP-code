@@ -1,1 +1,37 @@
+# IBD segment calls using RaPID (version 1.7)
+## 3 cM
+### run 1
+RaPID_v.1.7 -i <VCF_file> -o <output_folder3_1> -g <map_file> -r 10 -s 2 -d 3 -e 1 -w 2
+### run 2
+RaPID_v.1.7 -i <VCF_file> -o <output_folder3_2> -g <map_file> -r 10 -s 2 -d 3 -e 2 -w 2
+
+## 5 cM
+### run 1
+RaPID_v.1.7 -i <VCF_file> -o <output_folder5_1> -g <map_file> -r 10 -s 2 -d 5 -e 1 -w 3
+### run 2
+RaPID_v.1.7 -i <VCF_file> -o <output_folder5_2> -g <map_file> -r 10 -s 2 -d 5 -e 2 -w 3
+
+## 10 cM
+### run 1
+RaPID_v.1.7 -i <VCF_file> -o <output_folder5_1> -g <map_file> -r 10 -s 2 -d 10 -e 1 -w 3
+### run 2
+RaPID_v.1.7 -i <VCF_file> -o <output_folder5_2> -g <map_file> -r 10 -s 2 -d 10 -e 2 -w 3
+
+# IBD segment calls using hap-IBD (version 1.0)
+## 3 cM
+java -jar hap-ibd.jar gt=<VCF_file> map=<map_file> out=<output_file3> min-output=3 nthreads=100
+## 5 cM
+java -jar hap-ibd.jar gt=<VCF_file> map=<map_file> out=<output_file5> min-output=5 nthreads=100
+## 10 cM
+java -jar hap-ibd.jar gt=<VCF_file> map=<map_file> out=<output_file5> min-output=10 nthreads=100
+
+# Genetic maps (average genetic maps from deCODE [1], supplementary dataset 3)
+https://www.science.org/doi/10.1126/science.aau1043
+
+# Reference
+1. Halldorsson BV, Palsson G, Stefansson OA, Jonsson H, Hardarson MT, Eggertsson HP, Gunnarsson B, Oddsson A, Halldorsson GH, Zink F, Gudjonsson SA, Frigge ML, Thorleifsson G, Sigurdsson A, Stacey SN, Sulem P, Masson G, Helgason A, Gudbjartsson DF, Thorsteinsdottir U, Stefansson K. Characterizing mutagenic effects of recombination through a sequence-level genetic map. Science. 2019 Jan 25;363(6425):eaau1043. doi: 10.1126/science.aau1043. Erratum in: Science. 2019 Feb 8;363(6427): PMID: 30679340.
+
+
+
+
 
