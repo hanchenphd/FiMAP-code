@@ -1,1 +1,28 @@
+# chunk plink and imputed genotype files into 1cM
+Rscript --vanilla scripts/simulation/chunk_plink_gds.R
+nohup sh -c 'for i in {1..22}; do echo $i; Rscript --vanilla scripts/simulation/chunk_imputed_gds.R $i; done' &
 
+# count nonzero off-diagonal elements
+nohup sh -c 'for cm in 3 5 10; do echo ${cm}cm; Rscript --vanilla scripts/simulation/count_nonzero.R ${cm}cm/1/chunk.1cM/ ${cm}cm/1/nonzero_${cm}cm.txt; Rscript --vanilla scripts/simulation/count_nonzero.R hapIBD/${cm}cm/chunk.1cM/ hapIBD/${cm}cm/nonzero_${cm}cm.txt; done' &
+
+# asymptotic vs finite-sample p-value simulation
+nohup sh -c 'for i in 10k 100k 1m; do echo $i; Rscript --vanilla scripts/simulation/random10k_simIBD_exact.R 48 12345 3 1 40 $i; done' &
+nohup sh -c 'for i in 10k 100k 1m; do echo $i; for j in 100 1000 10000; do echo $j; Rscript --vanilla scripts/simulation/random10k_simIBD.R 48 12345 3 1 40 $j $i; done; done' &
+
+# null simulation
+## RaPID
+nohup sh -c 'for i in {1..50}; do echo $i; Rscript --vanilla scripts/simulation/null_simul_RaPID.R $i 3 1; done' &
+nohup sh -c 'for i in {1..50}; do echo $i; Rscript --vanilla scripts/simulation/null_simul_RaPID.R $i 5 1; done' &
+nohup sh -c 'for i in {1..50}; do echo $i; Rscript --vanilla scripts/simulation/null_simul_RaPID.R $i 10 1; done' &
+
+## hap-IBD
+nohup sh -c 'for i in {1..50}; do echo $i; Rscript --vanilla scripts/simulation/null_simul_hapIBD.R $i 3 1; done' &
+nohup sh -c 'for i in {1..50}; do echo $i; Rscript --vanilla scripts/simulation/null_simul_hapIBD.R $i 5 1; done' &
+nohup sh -c 'for i in {1..50}; do echo $i; Rscript --vanilla scripts/simulation/null_simul_hapIBD.R $i 10 1; done' &
+
+# power simulation
+## untyped
+nohup Rscript --vanilla scripts/simulation/power_simul_untyped.R &
+
+## haplotype
+nohup Rscript --vanilla scripts/simulation/power_simul_haplotype.R &
