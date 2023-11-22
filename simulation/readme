@@ -26,3 +26,10 @@ nohup Rscript --vanilla scripts/simulation/power_simul_untyped.R &
 
 ## haplotype
 nohup Rscript --vanilla scripts/simulation/power_simul_haplotype.R &
+### This simulation made use of haplotypes with length ≥ 0.5 cM shared by at least 500 individuals in the UK Biobank using a Forward-Only PBWT algorithm [1] with the following command:
+./run.sh --readVCF <VCF_FILE> --map <MAP_FILE> --writeTo <OUTPUT_FOLDER> --length 0.5 --width 500
+### The `run.sh` script (version 1.0) can be found at
+https://github.com/ZhiGroup/bi-PBWT/tree/master/Forward-Only%20PBWT
+
+# Reference
+1. Naseri A, Zhi D, Zhang S. Discovery of runs-of-homozygosity diplotype clusters and their associations with diseases in UK Biobank. medRxiv [Preprint]. 2020 Oct 27:2020.10.26.20220004. doi: 10.1101/2020.10.26.20220004. PMID: 33140058; PMCID: PMC7605569.
